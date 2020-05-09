@@ -1,0 +1,2 @@
+defmodule EdgeDB do
+end
