@@ -85,6 +85,17 @@ defmodule EdgeDB.Client do
     end
   end
 
+  def disconnect(socket) do
+    # send Terminate
+    # https://edgedb.com/docs/internals/protocol/messages#ref-protocol-msg-terminate
+    _ = send_message("", 0x58, socket)
+    :gen_tcp.close(socket)
+  end
+
+  def send_sync(socket) do
+    send_message("", 0x53, socket)
+  end
+
   defp handle_authentication(socket, data, username, password) do
     case data do
       # Auth method `Trust` (passwordless auth) is enabled

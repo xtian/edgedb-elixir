@@ -21,6 +21,9 @@ defmodule EdgeDB.MixProject do
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
-    []
+    [
+      {:binpp, "~> 1.1", only: :dev},
+      {:db_connection, "~> 2.2"}
+    ]
   end
 end
